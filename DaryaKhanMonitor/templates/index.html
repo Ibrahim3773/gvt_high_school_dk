@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="text-center mb-5">
+            <h1 class="display-4">Welcome to Attendance Monitoring System</h1>
+            <p class="lead">Govt. High School Darya Khan</p>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-people-fill display-1 text-primary mb-3"></i>
+                <h3 class="card-title">Total Students</h3>
+                <p class="display-4">{{ student_count }}</p>
+                <a href="{{ url_for('students') }}" class="btn btn-primary">View Students</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-upload display-1 text-success mb-3"></i>
+                <h3 class="card-title">Upload Student Data</h3>
+                <p class="text-muted">Add or update student information from CSV/Excel files</p>
+                <a href="{{ url_for('upload') }}" class="btn btn-success">Upload Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-check-circle-fill display-1 text-warning mb-3"></i>
+                <h3 class="card-title">Mark Attendance</h3>
+                <p class="text-muted">Record daily attendance for students</p>
+                <a href="{{ url_for('attendance') }}" class="btn btn-warning">Mark Now</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <i class="bi bi-chat-dots-fill display-1 text-info mb-3"></i>
+                <h3 class="card-title">Send SMS Alerts</h3>
+                <p class="text-muted">Notify parents of absent students</p>
+                <a href="{{ url_for('sms') }}" class="btn btn-info">Send SMS</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h4 class="card-title"><i class="bi bi-info-circle"></i> Quick Guide</h4>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">1. Upload student data using CSV or Excel file</li>
+                    <li class="list-group-item">2. Mark daily attendance for each class</li>
+                    <li class="list-group-item">3. View attendance records and filter by date/class</li>
+                    <li class="list-group-item">4. Send SMS notifications to parents of absent students</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Student Data{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 offset-md-2">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h3 class="mb-0"><i class="bi bi-upload"></i> Upload Student Data</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="file" class="form-label">Select CSV or Excel File</label>
+                        <input class="form-control" type="file" id="file" name="file" accept=".csv,.xlsx,.xls" required>
+                        <div class="form-text">
+                            Supported formats: CSV, XLSX, XLS. Maximum file size: 16MB
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-upload"></i> Upload
+                    </button>
+                    <a href="{{ url_for('students') }}" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Back to Students
+                    </a>
+                </form>
+            </div>
+        </div>
+
+        <div class="card shadow mt-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0"><i class="bi bi-info-circle"></i> File Format Requirements</h5>
+            </div>
+            <div class="card-body">
+                <p>Your file must contain the following columns (case-sensitive):</p>
+                <ul>
+                    <li><strong>name</strong> - Student's full name</li>
+                    <li><strong>roll_number</strong> - Student's roll number (must be unique)</li>
+                    <li><strong>class</strong> - Student's class (e.g., 9, 10, 11, 12)</li>
+                    <li><strong>section</strong> - Student's section (e.g., A, B, C)</li>
+                    <li><strong>parent_name</strong> - Parent or guardian's name</li>
+                    <li><strong>parent_contact</strong> - Parent's phone number</li>
+                </ul>
+                
+                <h6 class="mt-4">Example CSV Format:</h6>
+                <div class="bg-light p-3 rounded">
+                    <code>
+                        name,roll_number,class,section,parent_name,parent_contact<br>
+                        Ali Ahmed,101,9,A,Ahmed Khan,03001234567<br>
+                        Sara Bibi,102,9,A,Muhammad Ali,03009876543<br>
+                        Hassan Ali,201,10,B,Ali Hassan,03451234567
+                    </code>
+                </div>
+                
+                <div class="alert alert-warning mt-3" role="alert">
+                    <i class="bi bi-exclamation-triangle"></i> 
+                    <strong>Note:</strong> If a student with the same roll number already exists, their information will be updated.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
